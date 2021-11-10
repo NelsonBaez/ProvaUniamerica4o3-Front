@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Outlet } from 'react-router';
 import api from '../../api/api';
-import Contact from '../Contact/Contact';
+import ContactLink from '../ContactLink/ContactLink';
 
 
 export default function ContactList(){
@@ -16,11 +17,14 @@ export default function ContactList(){
   
   return (
     <div>
-      {
-        contacts.map((contact) => {
-          return <Contact contact={contact} />
-        })
-      }
+      <div>
+        {
+          contacts.map((contact) => {
+            return <ContactLink contact={contact} />
+          })
+        }
+      </div>
+      <Outlet />
     </div>
   )
 };

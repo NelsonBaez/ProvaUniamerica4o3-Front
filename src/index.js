@@ -6,13 +6,24 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes , Route } from 'react-router-dom';
 import Contacts from './routes/contacts';
 import Home from './routes/home';
+import Contact from './components/Contact/Contact';
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="" element={<Home />} />
-        <Route path="contatos" element={<Contacts />} />
+        <Route path="contatos" element={<Contacts />} >
+          <Route path=":contactId" element={<Contact />} />
+        </Route>
+        <Route
+          path="*"
+          element={
+            <main >
+              <p>404 Not Found</p>
+            </main>
+          }
+        />
       </Route>
     </Routes>
   </BrowserRouter>,

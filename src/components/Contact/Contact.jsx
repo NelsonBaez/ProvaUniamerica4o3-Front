@@ -1,12 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import api from '../../api/api';
 
 
-export default function Contact({contact}){
-  const {name} = contact;
+export default function Contact(){
+  let params = useParams();
+
+  const [contact, setContact] = useState({});
+
+  useEffect(() => {
+    api.get(`contacts/${parseInt(params.contactId)}`)
+      .then( (response) => setContact(response.data))
+      .catch((err) => {
+        console.error(err);
+      })
+  }, [params.contactId]);
 
   return (
     <div>
-      <div>{name}</div>
+      <h2>Contato: { contact.name}</h2>
+      <div>
+        <label>Nome: </label>
+        <input type="text" name="name" value={contact.name} />
+      </div>
+      <div>
+        <label>Email: </label>
+        <input type="text" name="email" value={contact.email} />
+      </div>
+      <div>
+        <label>Telefone: </label>
+        <input type="text" name="phone" value={contact.phone} />
+      </div>
     </div>
   )
 };
