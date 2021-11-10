@@ -1,11 +1,16 @@
 
+import { Outlet} from 'react-router';
+import { Link } from 'react-router-dom';
 import './App.css';
-import ContactCard from './components/ContactList/ContactList';
 
 function App() {
   return (
     <div className="App">
-      <ContactCard />
+      <nav>
+        <Link to='/'>Home</Link>
+        <Link to='/contatos'>Contatos</Link>
+      </nav>
+      <Outlet />
     </div>
   );
 }

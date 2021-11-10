@@ -2,13 +2,11 @@ import React from 'react';
 
 
 export default function Contact({contact}){
-  const {name, email, phone} = contact;
+  const {name} = contact;
 
   return (
     <div>
       <div>{name}</div>
-      <div>{email}</div>
-      <div>{phone}</div>
     </div>
   )
 };
