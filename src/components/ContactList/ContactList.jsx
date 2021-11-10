@@ -19,7 +19,7 @@ export default function ContactList(){
       .catch((err) => {
         console.error(err);
       })
-  }, [history]);
+  }, [history.invoiceId]);
   
   return (
     <div>

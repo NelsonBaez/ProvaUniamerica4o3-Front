@@ -7,6 +7,7 @@ import { BrowserRouter, Routes , Route } from 'react-router-dom';
 import Contacts from './routes/contacts';
 import Home from './routes/home';
 import Contact from './components/Contact/Contact';
+import NewContact from './components/NewContact/NewContact';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -14,6 +15,7 @@ ReactDOM.render(
       <Route path="/" element={<App />}>
         <Route path="" element={<Home />} />
         <Route path="contatos" element={<Contacts />} >
+          <Route path="new" element={<NewContact />} />
           <Route path=":contactId" element={<Contact />} />
         </Route>
         <Route

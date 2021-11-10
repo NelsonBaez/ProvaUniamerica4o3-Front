@@ -1,23 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import api from '../../api/api';
 
 
-export default function Contact(){
-  let params = useParams();
+export default function NewContact(){
   let navigate = useNavigate();
 
   const [contact, setContact] = useState({});
   const [error, setError] = useState();
-
-  function deleteContact(id){
-    api.delete(`contacts/${id}`)
-      .then( (response) => setContact(response))
-      .catch((err) => {
-        setError(err.response.data.message);
-        console.error(err);
-      })
-  }
 
   const handleInputChange = event => {
     const { name, value } = event.target
@@ -25,8 +15,8 @@ export default function Contact(){
     setContact({ ...contact, [name]: value })
 };
 
-  function updateContact(id) {
-    api.put(`contacts/${id}`, contact)
+  function createContact(data) {
+    api.post('contacts', data)
       .then( (response) => setContact(response))
       .catch((err) => {
         setError(err.response.data.message);
@@ -34,18 +24,9 @@ export default function Contact(){
       })
   }
 
-  useEffect(() => {
-    api.get(`contacts/${parseInt(params.contactId)}`)
-      .then( (response) => setContact(response.data))
-      .catch((err) => {
-        setError(err.response.data.message);
-        console.error(err);
-      })
-  }, [params.contactId]);
-
   return (
     <div>
-      <h2>Contato: { contact.name ?? error}</h2>
+      <h2>Novo Contato { error}</h2>
       <form action="">
         <div>
           <label>Nome: </label>
@@ -63,19 +44,11 @@ export default function Contact(){
         <div>
           <button
             onClick={() => {
-              updateContact(contact.id);
+              createContact(contact);
               navigate('/contatos');
             }}
           >
-            Atualizar
-          </button>
-          <button
-            onClick={() => {
-              deleteContact(contact.id);
-              navigate('/contatos');
-            }}
-          >
-            Deletar
+            Cadastrar
           </button>
         </div>
       </form>
