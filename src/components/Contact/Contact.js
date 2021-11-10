@@ -2,22 +2,14 @@ import React, { useEffect, useState } from 'react';
 import api from '../../api/api';
 
 
-export default function Contact(){
-  const [contact, setContact] = useState();
+export default function Contact({contact}){
+  const {name, email, phone} = contact;
 
-  useEffect(() => {
-    api.get('/contacts')
-      .then( (response) => setContact(response.data))
-      .catch((err) => {
-        console.error(err);
-      })
-  }, []);
-  
   return (
     <div>
-      <div>{contact.name}</div>
-      <div>{contact.email}</div>
-      <div>{contact.phone}</div>
+      <div>{name}</div>
+      <div>{email}</div>
+      <div>{phone}</div>
     </div>
   )
 };
