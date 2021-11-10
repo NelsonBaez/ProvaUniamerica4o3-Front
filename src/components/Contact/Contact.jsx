@@ -18,6 +18,31 @@ export default function Contact(){
         console.error(err);
       })
   }
+
+  const handleInputChange = event => {
+    const { name, value } = event.target
+
+    setContact({ ...contact, [name]: value })
+};
+
+  function updateContact(id) {
+    api.put(`contacts/${id}`, contact)
+      .then( (response) => setContact(response))
+      .catch((err) => {
+        setError(err.response.data.message);
+        console.error(err);
+      })
+  }
+
+  function createContact(data) {
+    api.post('contacts', data)
+      .then( (response) => setContact(response))
+      .catch((err) => {
+        setError(err.response.data.message);
+        console.error(err);
+      })
+  }
+
   useEffect(() => {
     api.get(`contacts/${parseInt(params.contactId)}`)
       .then( (response) => setContact(response.data))
@@ -30,28 +55,39 @@ export default function Contact(){
   return (
     <div>
       <h2>Contato: { contact.name ?? error}</h2>
-      <div>
-        <label>Nome: </label>
-        <input type="text" name="name" value={contact.name} />
-      </div>
-      <div>
-        <label>Email: </label>
-        <input type="text" name="email" value={contact.email} />
-      </div>
-      <div>
-        <label>Telefone: </label>
-        <input type="text" name="phone" value={contact.phone} />
-      </div>
-      <div>
-        <button
-          onClick={() => {
-            deleteContact(contact.id);
-            navigate('/');
-          }}
-        >
-          Deletar
-        </button>
-      </div>
+      <form action="">
+        <div>
+          <label>Nome: </label>
+          <input type="text" name="name" value={contact.name} onChange={handleInputChange}/>
+        </div>
+        <div>
+          <label>Email: </label>
+          <input type="text" name="email" value={contact.email} onChange={handleInputChange}
+          /> 
+        </div>
+        <div>
+          <label>Telefone: </label>
+          <input type="text" name="phone" value={contact.phone} onChange={handleInputChange} />
+        </div>
+        <div>
+          <button
+            onClick={() => {
+              updateContact(contact.id);
+              navigate('/contatos');
+            }}
+          >
+            Atualizar
+          </button>
+          <button
+            onClick={() => {
+              deleteContact(contact.id);
+              navigate('/contatos');
+            }}
+          >
+            Deletar
+          </button>
+        </div>
+      </form>
     </div>
   )
 };
