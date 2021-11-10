@@ -30,6 +30,7 @@ export default function Contact(){
       .then( (response) => setContact(response))
       .catch((err) => {
         setError(err.response.data.message);
+        alert(err.response.data.title);
         console.error(err);
       })
   }
