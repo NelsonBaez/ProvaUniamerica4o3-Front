@@ -7,18 +7,20 @@ export default function Contact(){
   let params = useParams();
 
   const [contact, setContact] = useState({});
+  const [error, setError] = useState();
 
   useEffect(() => {
     api.get(`contacts/${parseInt(params.contactId)}`)
       .then( (response) => setContact(response.data))
       .catch((err) => {
+        setError(err.response.data.message);
         console.error(err);
       })
   }, [params.contactId]);
 
   return (
     <div>
-      <h2>Contato: { contact.name}</h2>
+      <h2>Contato: { contact.name ?? error}</h2>
       <div>
         <label>Nome: </label>
         <input type="text" name="name" value={contact.name} />
