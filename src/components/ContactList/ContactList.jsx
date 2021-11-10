@@ -24,7 +24,7 @@ export default function ContactList(){
           })
         }
       </div>
-      <Outlet />
+        <Outlet />
     </div>
   )
 };

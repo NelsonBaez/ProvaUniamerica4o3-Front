@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import api from '../../api/api';
 
 
 export default function Contact(){
   let params = useParams();
+  let navigate = useNavigate();
 
   const [contact, setContact] = useState({});
   const [error, setError] = useState();
 
+  function deleteContact(id){
+    api.delete(`contacts/${id}`)
+      .then( (response) => setContact(response))
+      .catch((err) => {
+        setError(err.response.data.message);
+        console.error(err);
+      })
+  }
   useEffect(() => {
     api.get(`contacts/${parseInt(params.contactId)}`)
       .then( (response) => setContact(response.data))
@@ -32,6 +41,16 @@ export default function Contact(){
       <div>
         <label>Telefone: </label>
         <input type="text" name="phone" value={contact.phone} />
+      </div>
+      <div>
+        <button
+          onClick={() => {
+            deleteContact(contact.id);
+            navigate('/');
+          }}
+        >
+          Deletar
+        </button>
       </div>
     </div>
   )
