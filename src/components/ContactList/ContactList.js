@@ -3,7 +3,7 @@ import api from '../../api/api';
 import Contact from '../Contact/Contact';
 
 
-export default function ContactCard(){
+export default function ContactList(){
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 
 import './App.css';
-import ContactCard from './components/ContactCard/ContactCard';
+import ContactCard from './components/ContactList/ContactList';
 
 function App() {
   return (
