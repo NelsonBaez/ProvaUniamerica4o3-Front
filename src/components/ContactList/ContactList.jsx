@@ -7,7 +7,6 @@ import ContactLink from '../ContactLink/ContactLink';
 export default function ContactList(){
   const [contacts, setContacts] = useState([]);
   const history = useParams();
-  console.log(history);
 
   let newContact = {
     id: 'new',
@@ -28,10 +27,10 @@ export default function ContactList(){
   return (
     <div>
       <div>
-          <ContactLink contact={newContact}  />
+          <ContactLink key="new" contact={newContact}  />
         {
           contacts.map((contact) => {
-            return <ContactLink contact={contact} />
+            return <ContactLink key={contact.id} contact={contact} />
           })
         }
       </div>
