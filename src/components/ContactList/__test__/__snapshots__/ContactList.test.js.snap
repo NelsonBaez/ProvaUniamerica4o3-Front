@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <div>
+    <div>
+      <a
+        className="blue"
+        data-testid="link-new"
+        href="/contatos/new"
+        onClick={[Function]}
+      >
+        Cadastrar novo Contato
+      </a>
+    </div>
+  </div>
+</div>
+`;

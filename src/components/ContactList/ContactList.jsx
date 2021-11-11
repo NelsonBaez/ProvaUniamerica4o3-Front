@@ -13,12 +13,16 @@ export default function ContactList(){
     id: 'new',
     name: 'Cadastrar novo Contato'
   }
-  useEffect(() => {
+
+  function getContacts(){
     api.get('/contacts')
       .then( (response) => setContacts(response.data))
       .catch((err) => {
         console.error(err);
       })
+  }
+  useEffect(() => {
+    getContacts();
   }, [history]);
   
   return (
