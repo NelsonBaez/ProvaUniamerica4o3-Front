@@ -45,24 +45,25 @@ export default function Contact(){
   }, [params.contactId]);
 
   return (
-    <div>
+    <div className="flex flex-col flex-wrap ">
       <h2>Contato: { contact.name ?? error}</h2>
-      <form action="">
-        <div>
+      <form action="" >
+        <div className="m-3 flex-1">
           <label>Nome: </label>
-          <input type="text" name="name" value={contact.name} onChange={handleInputChange}/>
+          <input className="p-2 rounded" type="text" name="name" value={contact.name} onChange={handleInputChange}/>
         </div>
-        <div>
+        <div className="m-3">
           <label>Email: </label>
-          <input type="text" name="email" value={contact.email} onChange={handleInputChange}
+          <input className="p-2 rounded"  type="text" name="email" value={contact.email} onChange={handleInputChange}
           /> 
         </div>
-        <div>
+        <div className="m-3">
           <label>Telefone: </label>
-          <input type="text" name="phone" value={contact.phone} onChange={handleInputChange} />
+          <input className="p-2 rounded"  type="text" name="phone" value={contact.phone} onChange={handleInputChange} />
         </div>
         <div>
           <button
+            className="p-2 bg-blue-100 rounded m-1"
             onClick={() => {
               updateContact(contact.id);
               navigate('/contatos');
@@ -71,6 +72,7 @@ export default function Contact(){
             Atualizar
           </button>
           <button
+            className="p-2 bg-red-100 rounded m-1"
             onClick={() => {
               deleteContact(contact.id);
               navigate('/contatos');

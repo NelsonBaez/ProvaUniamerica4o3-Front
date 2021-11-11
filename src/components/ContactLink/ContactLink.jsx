@@ -6,9 +6,9 @@ export default function ContactLink({contact}){
   const {id, name} = contact;
 
   return (
-    <div>
+    <div >
       <NavLink 
-        className={({ isActive }) => isActive ? "red" : "blue"}
+        className={({ isActive }) => isActive ? "text-red-400" : "text-blue-400"}
         data-testid={`link-${id}`}
         id={`contato-${id}`}
         to={`/contatos/${id}`}>

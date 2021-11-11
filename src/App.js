@@ -5,12 +5,14 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <nav>
-        <NavLink className={({ isActive }) => isActive ? "red" : "blue"}  to='/'>Home</NavLink>
-        <NavLink className={({ isActive }) => isActive ? "red" : "blue"} id="link-contatos" to='/contatos'>Contatos</NavLink>
+    <div>
+      <nav className="p-6 max-w-full text-center  bg-white shadow-md ">
+        <NavLink className={({ isActive }) => isActive ? "text-red-500 mx-2" : "text-blue-500 mx-2"}  to='/'>Home</NavLink>
+        <NavLink className={({ isActive }) => isActive ? "text-red-500 mx-2" : "text-blue-500 mx-2"} id="link-contatos" to='/contatos'>Contatos</NavLink>
       </nav>
-      <Outlet />
+      <div className="max-w-full text-center mt-5">
+        <Outlet />
+      </div>
     </div>
   );
 }

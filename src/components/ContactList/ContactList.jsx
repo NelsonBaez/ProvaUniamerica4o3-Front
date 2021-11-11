@@ -25,8 +25,8 @@ export default function ContactList(){
   }, [history]);
   
   return (
-    <div>
-      <div>
+    <div className="flex flex-row flex-wrap container text-center mx-auto shadow-md">
+      <div className="p-5 border-r-2 text-xl bg-green-200"> 
           <ContactLink key="new" contact={newContact}  />
         {
           contacts.map((contact) => {
@@ -34,7 +34,9 @@ export default function ContactList(){
           })
         }
       </div>
+      <div className="flex-1 p-5 bg-gray-100">
         <Outlet />
+      </div>
     </div>
   )
 };
