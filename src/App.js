@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <nav>
         <NavLink className={({ isActive }) => isActive ? "red" : "blue"}  to='/'>Home</NavLink>
-        <NavLink className={({ isActive }) => isActive ? "red" : "blue"}  to='/contatos'>Contatos</NavLink>
+        <NavLink className={({ isActive }) => isActive ? "red" : "blue"} id="link-contatos" to='/contatos'>Contatos</NavLink>
       </nav>
       <Outlet />
     </div>

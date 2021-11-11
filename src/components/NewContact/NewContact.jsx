@@ -44,6 +44,7 @@ export default function NewContact(){
         </div>
         <div>
           <button
+            id="cadastrar"
             onClick={() => {
               createContact(contact);
               navigate('/contatos');

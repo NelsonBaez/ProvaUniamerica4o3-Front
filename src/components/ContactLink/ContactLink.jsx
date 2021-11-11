@@ -10,6 +10,7 @@ export default function ContactLink({contact}){
       <NavLink 
         className={({ isActive }) => isActive ? "red" : "blue"}
         data-testid={`link-${id}`}
+        id={`contato-${id}`}
         to={`/contatos/${id}`}>
         {name}
       </NavLink>
